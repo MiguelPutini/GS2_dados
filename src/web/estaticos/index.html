@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Assist AI | Portal do Cidadão & Estruturas de Dados</title>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- CABEÇALHO GOVERNAMENTAL MODERNO -->
+  <header class="barra-superior">
+    <div class="container header-conteudo">
+      <div class="marca">
+        <div class="logo-icone">🏛️</div>
+        <div>
+          <h1>Citizen Assist AI</h1>
+          <p class="subtitulo-marca">Global Solution 2026.2 | Data Structures & Algorithms (DSA)</p>
+        </div>
+      </div>
+      <div class="status-sistema">
+        <span class="badge-status pulsando" id="indicadorStatus">🟢 Lista Encadeada Ativa</span>
+        <button class="btn btn-outline btn-sm" onclick="abrirModalSobre()">ℹ️ Especificação Técnica</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVEGAÇÃO POR ABAS -->
+  <nav class="barra-navegacao">
+    <div class="container abas-container">
+      <button class="aba-btn ativa" onclick="mudarAba('servicos')">📋 Catálogo de Serviços</button>
+      <button class="aba-btn" onclick="mudarAba('dsa-visual')">🔗 Visualizador da Lista Encadeada (Nós & Ponteiros)</button>
+      <button class="aba-btn" onclick="mudarAba('algoritmos')">⚡ Bancada de Algoritmos (Merge & Insertion Sort)</button>
+      <button class="aba-btn" onclick="mudarAba('metricas')">📊 Análise & Estatísticas</button>
+    </div>
+  </nav>
+
+  <main class="container corpo-principal">
+
+    <!-- SEÇÃO 1: CATÁLOGO DE SERVIÇOS (CRUD) -->
+    <section id="aba-servicos" class="aba-conteudo ativa">
+      <!-- Painel Superior de Ações e Filtros -->
+      <div class="painel-controle">
+        <div class="busca-grupo">
+          <input type="text" id="campoBusca" placeholder="🔍 Pesquisar por título, categoria ou palavra-chave..." onkeyup="aoDigitarBusca(event)">
+          <select id="filtroCampoBusca">
+            <option value="geral">Busca Geral</option>
+            <option value="titulo">Por Título</option>
+            <option value="categoria">Por Categoria</option>
+          </select>
+          <button class="btn btn-primario" onclick="executarBusca()">Pesquisar</button>
+          <button class="btn btn-secundario" onclick="limparBusca()">Limpar</button>
+        </div>
+
+        <div class="botoes-acao">
+          <button class="btn btn-sucesso" onclick="abrirModalCadastro()">➕ Novo Serviço</button>
+          <button class="btn btn-neutro" onclick="carregarServicos()">🔄 Atualizar Lista</button>
+        </div>
+      </div>
+
+      <!-- Alerta de Métricas de Busca (DSA) -->
+      <div id="alertaMetricasBusca" class="card-alerta oculto">
+        <div class="alerta-conteudo">
+          <strong id="alertaBuscaTitulo">Algoritmo de Busca Executado:</strong>
+          <span id="alertaBuscaTexto">...</span>
+        </div>
+        <button class="btn-fechar" onclick="fecharAlertaBusca()">✕</button>
+      </div>
+
+      <!-- Tabela de Registros -->
+      <div class="tabela-responsiva">
+        <table class="tabela-servicos">
+          <thead>
+            <tr>
+              <th style="width: 70px;">ID</th>
+              <th>Título do Serviço Público</th>
+              <th>Categoria</th>
+              <th style="width: 110px;">Prazo Médio</th>
+              <th style="width: 100px;">Status</th>
+              <th style="width: 180px; text-align: center;">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaCorpo">
+            <!-- Linhas preenchidas via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      <div id="mensagemSemRegistros" class="mensagem-vazia oculto">
+        <p>📭 Nenhum serviço encontrado na Lista Encadeada.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: VISUALIZADOR DA ESTRUTURA DE DADOS (DSA) -->
+    <section id="aba-dsa-visual" class="aba-conteudo">
+      <div class="bloco-info-dsa">
+        <h2>Visualização Gráfica da Estrutura de Lista Simplesmente Encadeada</h2>
+        <p>
+          Esta visualização expõe explicitamente como os dados estão alocados em memória. Cada retângulo representa uma instância da classe <code>Node</code>, armazenando os dados do serviço e um ponteiro de referência <code>self.proximo</code> apontando para o próximo nó.
+        </p>
+        <div class="detalhes-cabeca-dsa">
+          <span><strong>Ponteiro Inicial (Head / Cabeça):</strong> <code id="lblEnderecoHead">...</code></span>
+          <span><strong>Total de Nós Alocados:</strong> <code id="lblTotalNos">0</code></span>
+          <button class="btn btn-sm btn-outline" onclick="atualizarVisualizadorDSA()">Atualizar Nós</button>
+        </div>
+      </div>
+
+      <div class="esteira-nos-container">
+        <div class="marcador-head">HEAD</div>
+        <div id="gradeNos" class="grade-nos">
+          <!-- Nós encadeados renderizados dinamicamente -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: BANCADA DE ALGORITMOS (ORDENAÇÃO E BUSCA) -->
+    <section id="aba-algoritmos" class="aba-conteudo">
+      <div class="bloco-info-dsa">
+        <h2>Experimentos Práticos de Ordenação (DSA)</h2>
+        <p>
+          Execute e compare os algoritmos clássicos implementados pela equipe do zero (sem uso de <code>.sort()</code>).
+          Analise o número de comparações de chaves, religações de ponteiros e tempo em milissegundos.
+        </p>
+      </div>
+
+      <div class="grade-controles-algoritmos">
+        <div class="card-controle">
+          <label for="selCriterio">Critério de Ordenação:</label>
+          <select id="selCriterio">
+            <option value="id">Identificador Único (ID)</option>
+            <option value="titulo">Título do Serviço (A-Z)</option>
+            <option value="categoria">Categoria do Serviço</option>
+            <option value="prazo">Prazo Estimado de Atendimento</option>
+          </select>
+        </div>
+
+        <div class="card-controle">
+          <label for="selAlgoritmo">Algoritmo DSA Estudado:</label>
+          <select id="selAlgoritmo">
+            <option value="merge_sort">Merge Sort - O(n log n) [Divisão & Conquista]</option>
+            <option value="insertion_sort">Insertion Sort - O(n²) [Inserção Ordenada]</option>
+            <option value="selection_sort">Selection Sort - O(n²) [Seleção Direta]</option>
+          </select>
+        </div>
+
+        <div class="card-controle">
+          <label for="selOrdem">Direção:</label>
+          <select id="selOrdem">
+            <option value="asc">Crescente (Menor -> Maior / A -> Z)</option>
+            <option value="desc">Decrescente (Maior -> Menor / Z -> A)</option>
+          </select>
+        </div>
+
+        <div class="card-controle botoes-ordenar">
+          <label>&nbsp;</label>
+          <button class="btn btn-primario" onclick="executarOrdenacao(false)">⚡ Executar e Comparar</button>
+          <button class="btn btn-aviso" onclick="executarOrdenacao(true)">Aplicar na Lista Oficial</button>
+        </div>
+      </div>
+
+      <!-- Painel de Métricas do Algoritmo -->
+      <div id="painelMetricas" class="card-resultado-algoritmo oculto">
+        <h3>📊 Relatório de Desempenho do Algoritmo</h3>
+        <div class="metricas-grid">
+          <div class="metrica-item">
+            <span class="metrica-rotulo">Algoritmo</span>
+            <span class="metrica-valor" id="resAlgoNome">-</span>
+          </div>
+          <div class="metrica-item">
+            <span class="metrica-rotulo">Elementos</span>
+            <span class="metrica-valor" id="resAlgoQtd">0</span>
+          </div>
+          <div class="metrica-item">
+            <span class="metrica-rotulo">Comparações</span>
+            <span class="metrica-valor destaque-comparacao" id="resAlgoComparacoes">0</span>
+          </div>
+          <div class="metrica-item">
+            <span class="metrica-rotulo">Religações / Trocas</span>
+            <span class="metrica-valor" id="resAlgoReligacoes">0</span>
+          </div>
+          <div class="metrica-item">
+            <span class="metrica-rotulo">Tempo Decorrido</span>
+            <span class="metrica-valor destaque-tempo" id="resAlgoTempo">0.0 ms</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prévia da Lista Reordenada -->
+      <div class="card-previa-ordenada">
+        <h4>Prévia da Sequência Ordenada</h4>
+        <div id="previaOrdenadaCorpo" class="previa-lista">
+          <!-- Itens ordenados -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: ANÁLISE E ESTATÍSTICAS -->
+    <section id="aba-metricas" class="aba-conteudo">
+      <div class="grade-cards-totais">
+        <div class="card-kpi">
+          <span class="kpi-icone">📦</span>
+          <div>
+            <div class="kpi-valor" id="kpiTotalRegistros">0</div>
+            <div class="kpi-legenda">Serviços Cadastrados</div>
+          </div>
+        </div>
+        <div class="card-kpi">
+          <span class="kpi-icone">⏱️</span>
+          <div>
+            <div class="kpi-valor" id="kpiTempoMedio">0 d</div>
+            <div class="kpi-legenda">Tempo Médio de Atendimento</div>
+          </div>
+        </div>
+        <div class="card-kpi">
+          <span class="kpi-icone">📂</span>
+          <div>
+            <div class="kpi-valor" id="kpiTotalCategorias">0</div>
+            <div class="kpi-legenda">Categorias Ativas</div>
+          </div>
+        </div>
+        <div class="card-kpi">
+          <span class="kpi-icone">✅</span>
+          <div>
+            <div class="kpi-valor" id="kpiServicosAtivos">0</div>
+            <div class="kpi-legenda">Serviços com Status Ativo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="painel-graficos-metricas">
+        <div class="card-grafico">
+          <h3>Distribuição de Serviços por Categoria</h3>
+          <p class="sub-card">Proporção e volume de orientações públicas disponibilizadas</p>
+          <div id="barrasCategorias" class="lista-barras-progresso">
+            <!-- Barras geradas dinamicamente -->
+          </div>
+        </div>
+
+        <div class="card-grafico">
+          <h3>Distribuição por Situação / Status</h3>
+          <p class="sub-card">Disponibilidade dos canais de atendimento</p>
+          <div id="listaStatus" class="lista-barras-progresso">
+            <!-- Status gerados dinamicamente -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: DETALHES DO SERVIÇO -->
+  <div id="modalDetalhes" class="modal-backdrop oculto">
+    <div class="modal-janela">
+      <div class="modal-cabecalho">
+        <h3 id="detalheTituloModal">Detalhes do Serviço Público</h3>
+        <button class="btn-fechar" onclick="fecharModalDetalhes()">✕</button>
+      </div>
+      <div class="modal-corpo" id="detalheCorpoConteudo">
+        <!-- Preenchido via JS -->
+      </div>
+      <div class="modal-rodape">
+        <button class="btn btn-neutro" onclick="fecharModalDetalhes()">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: FORMULÁRIO DE CADASTRO / EDIÇÃO -->
+  <div id="modalFormulario" class="modal-backdrop oculto">
+    <div class="modal-janela modal-lg">
+      <div class="modal-cabecalho">
+        <h3 id="formTituloModal">Cadastrar Novo Serviço Público</h3>
+        <button class="btn-fechar" onclick="fecharModalFormulario()">✕</button>
+      </div>
+      <div class="modal-corpo">
+        <form id="formServico" onsubmit="salvarFormulario(event)">
+          <input type="hidden" id="formModoEdicao" value="0">
+
+          <div class="linha-form">
+            <div class="campo-grupo" style="flex: 1;">
+              <label for="formId">Identificador Único (ID) *</label>
+              <input type="number" id="formId" min="1" required placeholder="Ex: 205">
+              <small class="texto-ajuda">Chave primária na Lista Encadeada.</small>
+            </div>
+            <div class="campo-grupo" style="flex: 3;">
+              <label for="formTitulo">Título do Serviço / Orientação *</label>
+              <input type="text" id="formTitulo" required placeholder="Ex: Agendamento de Castração Gratuita">
+            </div>
+          </div>
+
+          <div class="linha-form">
+            <div class="campo-grupo" style="flex: 2;">
+              <label for="formCategoria">Categoria *</label>
+              <select id="formCategoria" required>
+                <option value="Saúde">Saúde</option>
+                <option value="Assistência Social">Assistência Social</option>
+                <option value="Documentação e Cidadania">Documentação e Cidadania</option>
+                <option value="Educação e Qualificação">Educação e Qualificação</option>
+                <option value="Serviços Urbanos">Serviços Urbanos</option>
+              </select>
+            </div>
+            <div class="campo-grupo" style="flex: 1;">
+              <label for="formTempo">Prazo Médio (dias) *</label>
+              <input type="number" id="formTempo" min="0" value="1" required>
+            </div>
+            <div class="campo-grupo" style="flex: 1;">
+              <label for="formStatus">Status *</label>
+              <select id="formStatus" required>
+                <option value="Ativo">Ativo</option>
+                <option value="Em Atualização">Em Atualização</option>
+                <option value="Suspenso">Suspenso</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="formDescricao">Descrição Detalhada do Serviço *</label>
+            <textarea id="formDescricao" rows="3" required placeholder="Explique como o cidadão deve proceder..."></textarea>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="formRequisitos">Requisitos e Documentação Exigida *</label>
+            <textarea id="formRequisitos" rows="2" required placeholder="Documentos necessários (CPF, comprovante, laudos)..."></textarea>
+          </div>
+
+          <div class="linha-form">
+            <div class="campo-grupo" style="flex: 1;">
+              <label for="formLocal">Local ou Canal de Atendimento *</label>
+              <input type="text" id="formLocal" required placeholder="Ex: Poupatempo ou portal gov.br">
+            </div>
+            <div class="campo-grupo" style="flex: 1;">
+              <label for="formPublico">Público-Alvo</label>
+              <input type="text" id="formPublico" value="População em geral">
+            </div>
+          </div>
+
+          <div class="modal-rodape">
+            <button type="button" class="btn btn-neutro" onclick="fecharModalFormulario()">Cancelar</button>
+            <button type="submit" class="btn btn-sucesso" id="btnSalvarForm">Salvar Registro na Lista</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SOBRE / ESPECIFICAÇÃO TÉCNICA -->
+  <div id="modalSobre" class="modal-backdrop oculto">
+    <div class="modal-janela modal-lg">
+      <div class="modal-cabecalho">
+        <h3>Especificação Técnica | Global Solution 2026.2</h3>
+        <button class="btn-fechar" onclick="fecharModalSobre()">✕</button>
+      </div>
+      <div class="modal-corpo texto-formatado">
+        <h4>Citizen Tech - Citizen Assist AI (DSA)</h4>
+        <p><strong>Objetivo:</strong> Sistema de gerenciamento e consulta de informações públicas ao cidadão, aplicando conhecimentos de Estruturas de Dados e Algoritmos.</p>
+        
+        <h5>👥 Integrantes da Equipe</h5>
+        <ul>
+          <li><strong>Miguel Putini</strong> — RM 571624</li>
+          <li><strong>Alexandre Rizzi</strong> — RM 569621</li>
+          <li><strong>Lucas Klein de Veiga</strong> — RM 570029</li>
+        </ul>
+
+        <h5>1. Estrutura de Dados Obrigatória</h5>
+        <ul>
+          <li><strong>Lista Simplesmente Encadeada (Singly Linked List):</strong> Desenvolvida com a classe <code>Node</code> e referências explícitas <code>self.cabeca</code> e <code>self.proximo</code>. Sem uso de arrays nativos para manipulação de nós.</li>
+        </ul>
+
+        <h5>2. Algoritmos Implementados</h5>
+        <ul>
+          <li><strong>Busca Linear O(n):</strong> Percorre os nós encadeados por ID ou atributos textuais (título, categoria e geral).</li>
+          <li><strong>Merge Sort O(n log n):</strong> Algoritmo de divisão e conquista operando diretamente sobre os nós da lista encadeada através da técnica do ponteiro lento e rápido (Slow & Fast Pointer).</li>
+          <li><strong>Insertion Sort O(n²):</strong> Inserção ordenada nó a nó para pequenos conjuntos.</li>
+        </ul>
+
+        <h5>3. Validação e Integridade</h5>
+        <p>Garantia de unicidade de identificadores (IDs positivos), tratamento de entradas nulas, vazias ou inválidas, e preservação dos ponteiros ao excluir ou atualizar registros.</p>
+      </div>
+      <div class="modal-rodape">
+        <button class="btn btn-primario" onclick="fecharModalSobre()">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="rodape-portal">
+    <div class="container rodape-conteudo">
+      <div>
+        <p><strong>Citizen Assist AI &copy; 2026.2</strong> — Solução de Cidadania Digital desenvolvida para a Global Solution.</p>
+        <p style="font-size: 0.78rem; margin-top: 4px; color: #94a3b8;">
+          <strong>Equipe:</strong> Miguel Putini (RM 571624) | Alexandre Rizzi (RM 569621) | Lucas Klein de Veiga (RM 570029)
+        </p>
+      </div>
+      <p class="tag-dsa">Engenharia de Software & Ciência de Dados | Data Structures and Algorithms</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

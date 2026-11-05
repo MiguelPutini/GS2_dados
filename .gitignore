@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Ambientes virtuais
+venv/
+env/
+.env
+
+# IDEs e Editores
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store

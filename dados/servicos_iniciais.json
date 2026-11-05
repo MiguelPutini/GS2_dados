@@ -1,0 +1,135 @@
+[
+  {
+    "id": 105,
+    "titulo": "Emissão da Carteira de Identidade Nacional (CIN)",
+    "categoria": "Documentação e Cidadania",
+    "descricao": "Emissão da nova carteira de identidade física e digital com número unificado de CPF.",
+    "requisitos": "Certidão de nascimento ou casamento original e comprovante de endereço recente.",
+    "local_atendimento": "Unidades do Poupatempo, Ganha Tempo ou Postos de Identificação Civil",
+    "publico_alvo": "Cidadãos brasileiros natos ou naturalizados",
+    "tempo_estimado_dias": 5,
+    "status": "Ativo"
+  },
+  {
+    "id": 101,
+    "titulo": "Agendamento de Consulta Básica - UBS",
+    "categoria": "Saúde",
+    "descricao": "Marcação de consultas eletivas em clínica médica, pediatria e ginecologia na rede de atenção primária.",
+    "requisitos": "Cartão Nacional do SUS, documento oficial com foto e comprovante de residência no território da UBS.",
+    "local_atendimento": "Unidade Básica de Saúde (UBS) de referência ou aplicativo Saúde Fácil",
+    "publico_alvo": "Moradores cadastrados na área de abrangência",
+    "tempo_estimado_dias": 3,
+    "status": "Ativo"
+  },
+  {
+    "id": 109,
+    "titulo": "Inscrição no Cadastro Único (CadÚnico)",
+    "categoria": "Assistência Social",
+    "descricao": "Inscrição e atualização de dados socioeconômicos para acesso ao Bolsa Família, Tarifa Social e BPC.",
+    "requisitos": "CPF de todos os membros familiares, comprovante de residência e carteira de trabalho ou holerite.",
+    "local_atendimento": "Centro de Referência de Assistência Social (CRAS)",
+    "publico_alvo": "Famílias de baixa renda com renda per capita de até meio salário mínimo",
+    "tempo_estimado_dias": 10,
+    "status": "Ativo"
+  },
+  {
+    "id": 102,
+    "titulo": "Vacinação de Rotina e Campanhas",
+    "categoria": "Saúde",
+    "descricao": "Aplicação de vacinas do Programa Nacional de Imunizações (PNI) para bebês, crianças, adultos e idosos.",
+    "requisitos": "Caderneta de vacinação e documento de identificação com foto.",
+    "local_atendimento": "Salas de vacina de qualquer UBS municipal",
+    "publico_alvo": "Toda a população de acordo com o calendário vacinal vigente",
+    "tempo_estimado_dias": 1,
+    "status": "Ativo"
+  },
+  {
+    "id": 115,
+    "titulo": "Solicitação de Manutenção de Iluminação Pública",
+    "categoria": "Serviços Urbanos",
+    "descricao": "Registro de chamado para reparo de lâmpadas apagadas, piscando ou acesas durante o dia em vias públicas.",
+    "requisitos": "Endereço completo da ocorrência, número aproximado do imóvel ou número impresso na plaqueta do poste.",
+    "local_atendimento": "Central 156, aplicativo municipal ou Portal do Cidadão",
+    "publico_alvo": "Qualquer munícipe",
+    "tempo_estimado_dias": 2,
+    "status": "Ativo"
+  },
+  {
+    "id": 104,
+    "titulo": "Retirada de Medicamentos de Alto Custo (DME)",
+    "categoria": "Saúde",
+    "descricao": "Dispensação de medicamentos especializados e de alto custo fornecidos pelo Componente Especializado do SUS.",
+    "requisitos": "Laudo de Solicitação de Medicamento (LME) preenchido pelo médico, receita atualizada e exames comprobatórios.",
+    "local_atendimento": "Farmácia de Alto Custo Regional",
+    "publico_alvo": "Pacientes portadores de patologias crônicas cadastradas nos protocolos do SUS",
+    "tempo_estimado_dias": 15,
+    "status": "Ativo"
+  },
+  {
+    "id": 112,
+    "titulo": "Matrícula na Educação de Jovens e Adultos (EJA)",
+    "categoria": "Educação e Qualificação",
+    "descricao": "Vagas gratuitas para conclusão do Ensino Fundamental e Médio para jovens e adultos que não concluíram na idade regular.",
+    "requisitos": "Histórico escolar anterior (ou teste de nivelamento), comprovante de endereço e RG.",
+    "local_atendimento": "Secretaria das Escolas Municipais e Estaduais participantes",
+    "publico_alvo": "Maiores de 15 anos para fundamental e maiores de 18 anos para médio",
+    "tempo_estimado_dias": 4,
+    "status": "Ativo"
+  },
+  {
+    "id": 114,
+    "titulo": "Tapa-Buracos e Recapeamento Asfáltico",
+    "categoria": "Serviços Urbanos",
+    "descricao": "Vistoria e reparo de buracos no pavimento de ruas e avenidas municipais.",
+    "requisitos": "Localização com cruzamento de ruas e fotos do local (opcional).",
+    "local_atendimento": "Subprefeitura regional ou Ouvidoria Municipal",
+    "publico_alvo": "Cidadãos e motoristas",
+    "tempo_estimado_dias": 7,
+    "status": "Ativo"
+  },
+  {
+    "id": 106,
+    "titulo": "Certidão de Quitação Eleitoral e Regularização de Título",
+    "categoria": "Documentação e Cidadania",
+    "descricao": "Verificação de situação eleitoral, justificativa de ausência às urnas e emissão de certidão de quitação.",
+    "requisitos": "Título de eleitor ou CPF e data de nascimento.",
+    "local_atendimento": "Portal do Tribunal Superior Eleitoral (Autoatendimento) ou Cartório Eleitoral",
+    "publico_alvo": "Eleitores brasileiros",
+    "tempo_estimado_dias": 1,
+    "status": "Ativo"
+  },
+  {
+    "id": 110,
+    "titulo": "Atendimento Social a Situações de Vulnerabilidade e Calamidade",
+    "categoria": "Assistência Social",
+    "descricao": "Acolhimento humanizado, concessão de benefícios eventuais (cesta emergencial, aluguel social) e orientação psicológica.",
+    "requisitos": "Relato da situação e documento de qualquer membro do núcleo familiar.",
+    "local_atendimento": "Centro de Referência Especializado de Assistência Social (CREAS)",
+    "publico_alvo": "Famílias e indivíduos em vulnerabilidade crítica ou violação de direitos",
+    "tempo_estimado_dias": 1,
+    "status": "Ativo"
+  },
+  {
+    "id": 113,
+    "titulo": "Cursos Gratuitos de Qualificação e Tecnologia",
+    "categoria": "Educação e Qualificação",
+    "descricao": "Capacitação profissional nas áreas de programação, atendimento ao cliente, logística e inteligência artificial básica.",
+    "requisitos": "Comprovante de conclusão do Ensino Médio ou cursando, e CPF.",
+    "local_atendimento": "Polo de Inovação Digital Municipal e plataforma EAD parceira",
+    "publico_alvo": "Jovens e trabalhadores em busca de recolocação profissional",
+    "tempo_estimado_dias": 3,
+    "status": "Ativo"
+  },
+  {
+    "id": 116,
+    "titulo": "Poda e Remoção de Árvores com Risco de Queda",
+    "categoria": "Serviços Urbanos",
+    "descricao": "Avaliação agronômica técnica e poda de galhos em contato com fiação elétrica ou remoção de árvores condenadas.",
+    "requisitos": "Endereço da calçada ou praça pública onde se localiza o vegetal.",
+    "local_atendimento": "Secretaria Municipal de Meio Ambiente e Defesa Civil",
+    "publico_alvo": "Moradores vizinhos",
+    "tempo_estimado_dias": 12,
+    "status": "Ativo"
+  }
+]
+
